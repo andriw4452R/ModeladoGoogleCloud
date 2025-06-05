@@ -59,4 +59,5 @@ def eliminar_completadas():
 
 # Ejecutamos la aplicación en modo debug si se llama directamente este archivo
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=8080)
+
