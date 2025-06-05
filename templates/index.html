@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Tareas</title>
+    
+    <!-- Enlace a la hoja de estilos externa ubicada en la carpeta 'static' -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+</head>
+
+<body>
+    <!-- Título principal de la página -->
+    <h1>Mis Tareas</h1>
+
+    <!-- Formulario para agregar nuevas tareas -->
+    <!-- Usa el método POST para enviar los datos a la ruta /agregar -->
+    <form action="/agregar" method="POST">
+        <!-- Campo de texto para escribir la nueva tarea, obligatorio -->
+        <input type="text" name="texto" placeholder="Nueva tarea" required>
+
+        <!-- Botón para enviar el formulario y agregar la tarea -->
+        <button type="submit">Agregar</button>
+    </form>
+
+    <!-- Lista desordenada donde se muestran las tareas existentes -->
+    <ul>
+        <!-- Bucle de Jinja (lenguaje de plantilla de Flask) que recorre la lista de tareas -->
+        {% for tarea in tareas %}
+            <li>
+                <!-- Si la tarea está completada, se muestra tachada -->
+                {% if tarea.completada %}
+                    <s>{{ tarea.texto }}</s>
+                {% else %}
+                    <!-- Si no está completada, se muestra normal con un enlace para completarla -->
+                    {{ tarea.texto }}
+                    <a href="/completar/{{ tarea.id }}">[Completar]</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Enlace para eliminar todas las tareas que ya han sido completadas -->
+    <a href="/eliminar_completadas">Eliminar completadas</a>
+</body>
+</html>
