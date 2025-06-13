@@ -1,5 +1,8 @@
+
+
 FROM python:3.11-slim
 
+# Establece el directorio de trabajo dentro del contenedor en /app
 WORKDIR /app
 
 COPY . .
