@@ -5,6 +5,8 @@ FROM python:3.11-slim
 # Establece el directorio de trabajo dentro del contenedor en /app
 WORKDIR /app
 
+
+#Copia todos los archivos del directorio actual en el host al directorio de trabajo del contenedor
 COPY . .
 
 RUN pip install --no-cache-dir -r requirements.txt
