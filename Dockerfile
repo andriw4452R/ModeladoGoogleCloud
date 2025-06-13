@@ -11,6 +11,8 @@ COPY . .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
+
+#Expone el puerto 8080, que será usado por la aplicación dentro del contenedor
 EXPOSE 8080
 
 CMD ["gunicorn", "-b", "0.0.0.0:8080", "app:app"]
